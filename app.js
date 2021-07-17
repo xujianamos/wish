@@ -9,9 +9,12 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+// 设置页面路径
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// 设置模板引擎:将默认模板引擎jade修改为art-template模板引擎
+// app.set('view engine', 'jade');
+app.engine('html',require('express-art-template'))
+app.set('view engine','html')
 
 app.use(logger('dev'));
 app.use(express.json());
